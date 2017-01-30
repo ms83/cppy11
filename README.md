@@ -56,6 +56,7 @@ boost::typeindex::type_id_with_cvr<T>().pretty_name()
 
 boost::typeindex::type_id_with_cvr<decltype(param)>().pretty_name()
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -98,6 +99,7 @@ dq.appendleft(20)
 dq.push_back(10)
 dq.push_front(20)
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -354,6 +356,7 @@ v = [1,2,3,4,5]
 ```cpp
 vector<int> v{1,2,3,4,5};
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -386,6 +389,7 @@ with open('example.txt', 'w') as file:
 ofstream file("example.txt");
 file << "some text\n";
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -403,6 +407,7 @@ f(3)
 auto f = [](int x){return x%2;};
 f(3);
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -556,6 +561,7 @@ size = len(d)
 ```cpp
 int size = d.size()
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -600,6 +606,7 @@ int main()
 ```cpp
 q.push(10);
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -615,6 +622,7 @@ q.push(10);
 ```cpp
 q.push(10);
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -679,6 +687,7 @@ s.remove("b");
 ```cpp
 s.erase("b");
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -695,6 +704,7 @@ s + 'a'
 ```cpp
 
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -768,6 +778,7 @@ void worker();
 thread t(worker);
 t.join();
 ```
+
 [&uarr;top](#c-for-python-programmers)
 
 
@@ -797,4 +808,5 @@ t = (10, "some string", 0.5)
 ```cpp
 auto t = make_tuple(10, "some string", 0.5);
 ```
+
 [&uarr;top](#c-for-python-programmers)

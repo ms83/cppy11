@@ -57,6 +57,5 @@ for section in sorted(topics):
         print('```python\n{}\n```'.format(py_code))
         print('```cpp\n{}\n```'.format(cpp_code))
 
-
-    print('[&uarr;top](#c-for-python-programmers)')
+    print('\n[&uarr;top](#c-for-python-programmers)')
 
