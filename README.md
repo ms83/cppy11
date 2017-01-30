@@ -1,1089 +1,800 @@
-[Map](#map) | [Set](#set) | [String](#string) | [Thread](#thread) | [Tuple](#tuple) | [Datatype](#datatype) | [Deque](#deque) | [Queue](#queue) | [Priority Queue](#priority-queue) | [Dynamic Array](#dynamic-array) | [File](#file) | [Lambda](#lambda)
 
+# C++ for Python Programmers
 
+[Datatype](#datatype) &nbsp; [Deque](#deque) &nbsp; [Dynamic Array](#dynamic-array) &nbsp; [File](#file) &nbsp; [Lambda](#lambda) &nbsp; [Map](#map) &nbsp; [Priority Queue](#priority-queue) &nbsp; [Queue](#queue) &nbsp; [Set](#set) &nbsp; [String](#string) &nbsp; [Thread](#thread) &nbsp; [Tuple](#tuple)
 
-# Map
 
-[./map/increase-the-value-of-an-element-of-a-map.cpp](#map-increase-the-value-of-an-element-of-a-map-cpp)
 
-[./map/check-if-key-exists-in-the-map.cpp](#map-check-if-key-exists-in-the-map-cpp)
+## Datatype
 
-[./map/initialize-map.py](#map-initialize-map-py)
+[convert array of ints to string](#convert-array-of-ints-to-string)
 
-[./map/get-size-of-a-map.py](#map-get-size-of-a-map-py)
+[convert int to string](#convert-int-to-string)
 
-[./map/copy-values-of-a-map-to-array.py](#map-copy-values-of-a-map-to-array-py)
+[convert string to int](#convert-string-to-int)
 
-[./map/get-size-of-a-map.cpp](#map-get-size-of-a-map-cpp)
+[get data type as string](#get-data-type-as-string)
 
-[./map/copy-values-of-a-map-to-array.cpp](#map-copy-values-of-a-map-to-array-cpp)
-
-[./map/store-multi-values-on-a-map.cpp](#map-store-multi-values-on-a-map-cpp)
-
-[./map/copy-keys-of-a-map-to-array.cpp](#map-copy-keys-of-a-map-to-array-cpp)
-
-[./map/remove-element-of-map.py](#map-remove-element-of-map-py)
-
-[./map/copy-keys-of-a-map-to-array.py](#map-copy-keys-of-a-map-to-array-py)
-
-[./map/set-element-of-map.cpp](#map-set-element-of-map-cpp)
-
-[./map/set-element-of-map.py](#map-set-element-of-map-py)
-
-[./map/iterate-over-a-map.py](#map-iterate-over-a-map-py)
-
-[./map/check-if-key-exists-in-the-map.py](#map-check-if-key-exists-in-the-map-py)
-
-[./map/iterate-over-a-map.cpp](#map-iterate-over-a-map-cpp)
-
-[./map/initialize-map.cpp](#map-initialize-map-cpp)
-
-[./map/remove-element-of-map.cpp](#map-remove-element-of-map-cpp)
-
-[./map/increase-the-value-of-an-element-of-a-map.py](#map-increase-the-value-of-an-element-of-a-map-py)
-
-[./map/store-multi-values-on-a-map.py](#map-store-multi-values-on-a-map-py)
-
-# ./map/increase-the-value-of-an-element-of-a-map.cpp
-```cpp
-
-```
+### convert int to string
 ```python
-
+s = str(k)
 ```
-
-# ./map/check-if-key-exists-in-the-map.cpp
 ```cpp
-
+string s = to_string(k);
 ```
-```python
-
-```
-
-# ./map/initialize-map.py
-```cpp
 
-```
+### convert array of ints to string
 ```python
-
+s = ''.join(map(str, v))
 ```
-
-# ./map/get-size-of-a-map.py
 ```cpp
-
-```
-```python
-
+stringstream ss;
+copy(v.begin(), v.end(), ostream_iterator<int>(ss, ""));
+string s = ss.str();
 ```
 
-# ./map/copy-values-of-a-map-to-array.py
-```cpp
-
-```
+### convert string to int
 ```python
-
+k = int(s)  # throws ValueError
 ```
-
-# ./map/get-size-of-a-map.cpp
 ```cpp
-
-```
-```python
-
+auto k = stoi(s);   // throws std::invalid_argument
 ```
-
-# ./map/copy-values-of-a-map-to-array.cpp
-```cpp
 
-```
+### get data type as string
 ```python
-
+type(var)
 ```
-
-# ./map/store-multi-values-on-a-map.cpp
 ```cpp
-
-```
-```python
+typeid(var).name()
 
-```
+// or
 
-# ./map/copy-keys-of-a-map-to-array.cpp
-```cpp
+boost::typeindex::type_id_with_cvr<T>().pretty_name()
 
-```
-```python
+// or
 
+boost::typeindex::type_id_with_cvr<decltype(param)>().pretty_name()
 ```
-
-# ./map/remove-element-of-map.py
-```cpp
+[&uarr;top](#c-for-python-programmers)
 
-```
-```python
 
-```
 
-# ./map/copy-keys-of-a-map-to-array.py
-```cpp
+## Deque
 
-```
-```python
+[access element](#access-element)
 
-```
+[initialize deque](#initialize-deque)
 
-# ./map/set-element-of-map.cpp
-```cpp
+[insert element](#insert-element)
 
-```
+### access element
 ```python
-
+dq[0]
+dq[-1]
+dq[5]   # don't do that. use list instead
 ```
-
-# ./map/set-element-of-map.py
 ```cpp
-
-```
-```python
-
+dq.front()
+dq.back()
+dq[5]   # don't do that. use vector instead
 ```
-
-# ./map/iterate-over-a-map.py
-```cpp
 
-```
+### initialize deque
 ```python
-
+from collections import deque
+dq = deque([0,1,2,3,4])
 ```
-
-# ./map/check-if-key-exists-in-the-map.py
 ```cpp
-
+deque<int> dq {0,1,2,3,4};
 ```
-```python
-
-```
-
-# ./map/iterate-over-a-map.cpp
-```cpp
 
-```
+### insert element
 ```python
-
+dq.append(10)
+dq.appendleft(20)
 ```
-
-# ./map/initialize-map.cpp
 ```cpp
-
+dq.push_back(10)
+dq.push_front(20)
 ```
-```python
+[&uarr;top](#c-for-python-programmers)
 
-```
 
-# ./map/remove-element-of-map.cpp
-```cpp
 
-```
-```python
+## Dynamic Array
 
-```
+[count filtered elements](#count-filtered-elements)
 
-# ./map/increase-the-value-of-an-element-of-a-map.py
-```cpp
+[filter array](#filter-array)
 
-```
-```python
+[find lower and upper bound](#find-lower-and-upper-bound)
 
-```
+[get min of elements in array](#get-min-of-elements-in-array)
 
-# ./map/store-multi-values-on-a-map.py
-```cpp
+[get sum of elements in array](#get-sum-of-elements-in-array)
 
-```
-```python
+[initialize array](#initialize-array)
 
-```
+[initialize array to 0 1 2 3 4 5 6 7 8 9](#initialize-array-to-0-1-2-3-4-5-6-7-8-9)
 
+[initialize array to 1 1 1 1 1](#initialize-array-to-1-1-1-1-1)
 
+[initialize n size array](#initialize-n-size-array)
 
-# Set
+[insert at the beginning](#insert-at-the-beginning)
 
-[./set/check-if-key-exists-in-the-set.cpp](#set-check-if-key-exists-in-the-set-cpp)
+[insert at the end](#insert-at-the-end)
 
-[./set/insert-element.cpp](#set-insert-element-cpp)
+[iterate over an array](#iterate-over-an-array)
 
-[./set/remove-element.cpp](#set-remove-element-cpp)
+[random access](#random-access)
 
-[./set/check-if-key-exists-in-the-set.py](#set-check-if-key-exists-in-the-set-py)
+[remove duplicates from array](#remove-duplicates-from-array)
 
-[./set/initialize-set.py](#set-initialize-set-py)
+[remove first element](#remove-first-element)
 
-[./set/remove-element.py](#set-remove-element-py)
+[remove last element](#remove-last-element)
 
-[./set/intialize-set.cpp](#set-intialize-set-cpp)
+[reverse array](#reverse-array)
 
-[./set/initialize-set.cpp](#set-initialize-set-cpp)
+[slice array](#slice-array)
 
-[./set/insert-element.py](#set-insert-element-py)
+[sort array](#sort-array)
 
-# ./set/check-if-key-exists-in-the-set.cpp
-```cpp
+[transform array](#transform-array)
 
-```
+### initialize n size array
 ```python
-
+v = [0] * N
 ```
-
-# ./set/insert-element.cpp
 ```cpp
-
+vector<int> v(N);
 ```
-```python
-
-```
-
-# ./set/remove-element.cpp
-```cpp
 
-```
+### filter array
 ```python
+# In place
+v = filter(lambda x: x%2 == 0, v)
 
+# Copy
+v2 = filter(lambda x: x%2 == 0, v)
 ```
-
-# ./set/check-if-key-exists-in-the-set.py
 ```cpp
-
-```
-```python
+// In place
+v.erase(remove_if(v.begin(), v.end(), [](const int x){return x%2 == 0;}), v.end());
 
+// Copy
+vector<int> v2;
+copy_if(v.begin(), v.end(), back_inserter(v2), [](const int x){return x%2 == 0;});
 ```
-
-# ./set/initialize-set.py
-```cpp
 
-```
+### get min of elements in array
 ```python
-
+minimal = min(v)
 ```
-
-# ./set/remove-element.py
 ```cpp
-
+auto minimum = min_element(v.begin(), v.end());
 ```
-```python
-
-```
-
-# ./set/intialize-set.cpp
-```cpp
 
-```
+### count filtered elements
 ```python
-
+cnt = len(filter(lambda x: x>10, v))
 ```
-
-# ./set/initialize-set.cpp
 ```cpp
-
-```
-```python
-
+int cnt = count_if(v.begin(), v.end(), [](int x) {return x>10;});
 ```
 
-# ./set/insert-element.py
-```cpp
-
-```
+### remove last element
 ```python
-
+v.pop()
 ```
-
-
-
-# String
-
-[./string/append.py](#string-append-py)
-
-# ./string/append.py
 ```cpp
-
-```
-```python
-
+v.pop_back();
 ```
-
-
-
-# Thread
-
-[./thread/start-thread.py](#thread-start-thread-py)
-
-[./thread/pass-read-only-data-to-thread.py](#thread-pass-read-only-data-to-thread-py)
-
-[./thread/start-thread.cpp](#thread-start-thread-cpp)
-
-[./thread/pass-read-only-data-to-thread.cpp](#thread-pass-read-only-data-to-thread-cpp)
 
-[./thread/pass-writable-data-to-thread.cpp](#thread-pass-writable-data-to-thread-cpp)
-
-[./thread/pass-writable-data-to-thread.py](#thread-pass-writable-data-to-thread-py)
-
-# ./thread/start-thread.py
-```cpp
-
-```
+### remove first element
 ```python
-
+v.pop(0)    # prefer deque
 ```
-
-# ./thread/pass-read-only-data-to-thread.py
 ```cpp
-
+v.erase(v.begin()); // prefer deque
 ```
-```python
-
-```
-
-# ./thread/start-thread.cpp
-```cpp
 
-```
+### insert at the beginning
 ```python
-
+# don't do that. use deque
 ```
-
-# ./thread/pass-read-only-data-to-thread.cpp
 ```cpp
-
-```
-```python
-
+// don't do that. Use deque
 ```
 
-# ./thread/pass-writable-data-to-thread.cpp
-```cpp
-
-```
+### remove duplicates from array
 ```python
-
+v = list(set(v))
 ```
-
-# ./thread/pass-writable-data-to-thread.py
 ```cpp
-
-```
-```python
-
+sort(v.begin(), v.end())
+v.erase(unique(v.begin(), v.end()), v.end());
 ```
-
-
-
-# Tuple
 
-[./tuple/initialize-tuple.cpp](#tuple-initialize-tuple-cpp)
-
-[./tuple/initialize-tuple.py](#tuple-initialize-tuple-py)
-
-[./tuple/access-tuple.py](#tuple-access-tuple-py)
-
-[./tuple/access-tuple.cpp](#tuple-access-tuple-cpp)
-
-# ./tuple/initialize-tuple.cpp
-```cpp
-
-```
+### initialize array to 1 1 1 1 1
 ```python
-
+v = [1]*5
 ```
-
-# ./tuple/initialize-tuple.py
 ```cpp
-
-```
-```python
-
+vector<int> v(5, 1);
 ```
-
-# ./tuple/access-tuple.py
-```cpp
 
-```
+### slice array
 ```python
-
+v = v[2:8]
+v = v[2:]
+v = v[:-2]
+v = v[-2:]
 ```
-
-# ./tuple/access-tuple.cpp
 ```cpp
-
-```
-```python
-
+v.assign(v.begin()+2, v.begin()+8);
+v.assign(v.begin()+2, v.end());
+v.assign(v.begin(), v.begin()+v.size()-2);
+v.assign(v.begin()+v.size()-2, v.end());
 ```
-
-
 
-# Datatype
-
-[./datatype/convert-array-of-ints-to-string.cpp](#datatype-convert-array-of-ints-to-string-cpp)
-
-[./datatype/convert-array-of-ints-to-string.py](#datatype-convert-array-of-ints-to-string-py)
-
-[./datatype/convert-string-to-int.cpp](#datatype-convert-string-to-int-cpp)
-
-[./datatype/convert-int-to-string.cpp](#datatype-convert-int-to-string-cpp)
-
-[./datatype/convert-int-to-string.py](#datatype-convert-int-to-string-py)
-
-[./datatype/get-data-type-as-string.py](#datatype-get-data-type-as-string-py)
-
-[./datatype/get-data-type-as-string.cpp](#datatype-get-data-type-as-string-cpp)
-
-[./datatype/convert-string-to-int.py](#datatype-convert-string-to-int-py)
-
-# ./datatype/convert-array-of-ints-to-string.cpp
-```cpp
-
-```
+### sort array
 ```python
+# In place
+v.sort()
 
-```
-
-# ./datatype/convert-array-of-ints-to-string.py
-```cpp
+# Copy
+v2 = sorted(v)
 
-```
-```python
+# Reversed order #1
+v.sort(reverse=True)
 
+# Reversed order #2
+sorted(v, reverse=True)
 ```
-
-# ./datatype/convert-string-to-int.cpp
 ```cpp
+// In place
+sort(v.begin(), v.end())
 
-```
-```python
+// Copy
+sort(v.begin(), v.end())
+vector<int> v2(v)
 
+// Reversed order
+sort(v.rbegin(), v.rend())
 ```
 
-# ./datatype/convert-int-to-string.cpp
-```cpp
-
-```
+### find lower and upper bound
 ```python
-
+import bisect
+v = [3, 5, 5, 5, 6, 8, 10]
+lower_bound_index = bisect.bisect_left(v, 5)  # 1
+upper_bound_index = bisect.bisect_right(v, 5) # 4
 ```
-
-# ./datatype/convert-int-to-string.py
 ```cpp
-
-```
-```python
-
+vector<int> v {3, 5, 5, 5, 6, 8, 10};
+auto lower_bound_index = distance(v.begin(), lower_bound(v.begin(), v.end(), 5));
+auto upper_bound_index = distance(v.begin(), upper_bound(v.begin(), v.end(), 5));
 ```
-
-# ./datatype/get-data-type-as-string.py
-```cpp
 
-```
+### insert at the end
 ```python
-
+v.append(5) # possible full reallocation
 ```
-
-# ./datatype/get-data-type-as-string.cpp
 ```cpp
-
+v.push_back(5)  // possible full reallocation
 ```
-```python
 
+### random access
+```python
+v[0]    # O(1)
 ```
-
-# ./datatype/convert-string-to-int.py
 ```cpp
-
+v[0]    # O(1)
 ```
-```python
 
+### iterate over an array
+```python
+for i in [0, 1, 2, 3, 4]:
+    pass
 ```
-
-
-
-# Deque
-
-[./deque/initialize-deque.py](#deque-initialize-deque-py)
-
-[./deque/access-element.py](#deque-access-element-py)
-
-[./deque/insert-element.cpp](#deque-insert-element-cpp)
-
-[./deque/initialize-deque.cpp](#deque-initialize-deque-cpp)
-
-[./deque/access-element.cpp](#deque-access-element-cpp)
-
-[./deque/insert-element.py](#deque-insert-element-py)
-
-# ./deque/initialize-deque.py
 ```cpp
-
+for (auto i: {0, 1, 2, 3, 4}) {
+}
 ```
+
+### transform array
 ```python
+# In place
+v = map(lambda x: x*2, v)
 
+# Copy
+v2 = map(lambda x: x*2, v)
 ```
-
-# ./deque/access-element.py
 ```cpp
+// In place
+transform(v.begin(), v.end(), v.begin(), [](const int x){return x*2;});
 
+// Copy
+vector<int> v2;
+transform(v.begin(), v.end(), back_inserter(v2), [](const int x){return x*2;});
 ```
-```python
 
+### reverse array
+```python
+v.reverse()
 ```
-
-# ./deque/insert-element.cpp
 ```cpp
-
+reverse(v.begin(), v.end());
 ```
-```python
 
+### initialize array to 0 1 2 3 4 5 6 7 8 9
+```python
+v = range(0, 10)
 ```
-
-# ./deque/initialize-deque.cpp
 ```cpp
-
+vector<int> v(10);
+iota(v.begin(), v.end(), 0);
 ```
-```python
 
+### get sum of elements in array
+```python
+total = sum(v)
 ```
-
-# ./deque/access-element.cpp
 ```cpp
-
+int total = accumulate(v.begin(), v.end(), 0)
 ```
-```python
 
+### initialize array
+```python
+v = [1,2,3,4,5]
 ```
-
-# ./deque/insert-element.py
 ```cpp
-
-```
-```python
-
+vector<int> v{1,2,3,4,5};
 ```
+[&uarr;top](#c-for-python-programmers)
 
 
 
-# Queue
+## File
 
-[./queue/insert-to-queue.cpp](#queue-insert-to-queue-cpp)
+[read file line by line](#read-file-line-by-line)
 
-[./queue/insert-to-queue.py](#queue-insert-to-queue-py)
+[write line to file](#write-line-to-file)
 
-# ./queue/insert-to-queue.cpp
-```cpp
-
-```
+### read file line by line
 ```python
-
+for line in open('example.txt'):
+    # line with ending \n
 ```
-
-# ./queue/insert-to-queue.py
 ```cpp
-
+string line;
+ifstream file("example.txt");   // #include<iostream>
+while (getline(file, line)) {   // #include<fstream>
+    // line without ending \n
+}
 ```
-```python
 
+### write line to file
+```python
+with open('example.txt', 'w') as file:
+    file.write('some text\n')
 ```
-
-
+```cpp
+ofstream file("example.txt");
+file << "some text\n";
+```
+[&uarr;top](#c-for-python-programmers)
 
-# Priority Queue
 
-[./priority-queue/insert-to-queue.cpp](#priority-queue-insert-to-queue-cpp)
 
-[./priority-queue/insert-element.py](#priority-queue-insert-element-py)
+## Lambda
 
-# ./priority-queue/insert-to-queue.cpp
-```cpp
+[create function](#create-function)
 
-```
+### create function
 ```python
-
+f = lambda x: x%2
+f(3)
 ```
-
-# ./priority-queue/insert-element.py
 ```cpp
-
-```
-```python
-
+auto f = [](int x){return x%2;};
+f(3);
 ```
-
-
-
-# Dynamic Array
-
-[./dynamic-array/remove-duplicates-from-array.cpp](#dynamic-array-remove-duplicates-from-array-cpp)
-
-[./dynamic-array/find-lower-and-upper-bound.py](#dynamic-array-find-lower-and-upper-bound-py)
-
-[./dynamic-array/initialize-array-to-0-1-2-3-4-5-6-7-8-9.cpp](#dynamic-array-initialize-array-to-0-1-2-3-4-5-6-7-8-9-cpp)
-
-[./dynamic-array/sort-array.py](#dynamic-array-sort-array-py)
-
-[./dynamic-array/random-access.cpp](#dynamic-array-random-access-cpp)
-
-[./dynamic-array/random-access.py](#dynamic-array-random-access-py)
-
-[./dynamic-array/slice-array.py](#dynamic-array-slice-array-py)
-
-[./dynamic-array/filter-array.cpp](#dynamic-array-filter-array-cpp)
-
-[./dynamic-array/iterate-over-an-array.cpp](#dynamic-array-iterate-over-an-array-cpp)
-
-[./dynamic-array/iterate-over-an-array.py](#dynamic-array-iterate-over-an-array-py)
-
-[./dynamic-array/filter-array.py](#dynamic-array-filter-array-py)
-
-[./dynamic-array/initialize-array-to-1-1-1-1-1.cpp](#dynamic-array-initialize-array-to-1-1-1-1-1-cpp)
-
-[./dynamic-array/slice-array.cpp](#dynamic-array-slice-array-cpp)
-
-[./dynamic-array/remove-first-element.cpp](#dynamic-array-remove-first-element-cpp)
-
-[./dynamic-array/remove-first-element.py](#dynamic-array-remove-first-element-py)
-
-[./dynamic-array/reverse-array.py](#dynamic-array-reverse-array-py)
-
-[./dynamic-array/get-sum-of-elements-in-array.py](#dynamic-array-get-sum-of-elements-in-array-py)
+[&uarr;top](#c-for-python-programmers)
 
-[./dynamic-array/initialize-array.py](#dynamic-array-initialize-array-py)
 
-[./dynamic-array/get-min-of-elements-in-array.cpp](#dynamic-array-get-min-of-elements-in-array-cpp)
 
-[./dynamic-array/initialize-array-to-0-1-2-3-4-5-6-7-8-9.py](#dynamic-array-initialize-array-to-0-1-2-3-4-5-6-7-8-9-py)
+## Map
 
-[./dynamic-array/insert-at-the-beginning.py](#dynamic-array-insert-at-the-beginning-py)
+[check if key exists in the map](#check-if-key-exists-in-the-map)
 
-[./dynamic-array/remove-last-element.cpp](#dynamic-array-remove-last-element-cpp)
+[copy keys of a map to array](#copy-keys-of-a-map-to-array)
 
-[./dynamic-array/get-min-of-elements-in-array.py](#dynamic-array-get-min-of-elements-in-array-py)
+[copy values of a map to array](#copy-values-of-a-map-to-array)
 
-[./dynamic-array/remove-last-element.py](#dynamic-array-remove-last-element-py)
+[get size of a map](#get-size-of-a-map)
 
-[./dynamic-array/initialize-array.cpp](#dynamic-array-initialize-array-cpp)
+[increase the value of an element of a map](#increase-the-value-of-an-element-of-a-map)
 
-[./dynamic-array/transform-array.py](#dynamic-array-transform-array-py)
+[initialize map](#initialize-map)
 
-[./dynamic-array/count-filtered-elements.cpp](#dynamic-array-count-filtered-elements-cpp)
+[iterate over a map](#iterate-over-a-map)
 
-[./dynamic-array/remove-duplicates-from-array.py](#dynamic-array-remove-duplicates-from-array-py)
+[remove element of map](#remove-element-of-map)
 
-[./dynamic-array/initialize-array-to-1-1-1-1-1.py](#dynamic-array-initialize-array-to-1-1-1-1-1-py)
+[set element of map](#set-element-of-map)
 
-[./dynamic-array/count-filtered-elements.py](#dynamic-array-count-filtered-elements-py)
+[store multi values on a map](#store-multi-values-on-a-map)
 
-[./dynamic-array/find-lower-and-upper-bound.cpp](#dynamic-array-find-lower-and-upper-bound-cpp)
-
-[./dynamic-array/initialize-n-size-array.cpp](#dynamic-array-initialize-n-size-array-cpp)
-
-[./dynamic-array/get-sum-of-elements-in-array.cpp](#dynamic-array-get-sum-of-elements-in-array-cpp)
-
-[./dynamic-array/transform-array.cpp](#dynamic-array-transform-array-cpp)
-
-[./dynamic-array/initialize-n-size-array.py](#dynamic-array-initialize-n-size-array-py)
-
-[./dynamic-array/insert-at-the-end.cpp](#dynamic-array-insert-at-the-end-cpp)
-
-[./dynamic-array/insert-at-the-beginning.cpp](#dynamic-array-insert-at-the-beginning-cpp)
-
-[./dynamic-array/insert-at-the-end.py](#dynamic-array-insert-at-the-end-py)
-
-[./dynamic-array/sort-array.cpp](#dynamic-array-sort-array-cpp)
-
-[./dynamic-array/reverse-array.cpp](#dynamic-array-reverse-array-cpp)
-
-# ./dynamic-array/remove-duplicates-from-array.cpp
-```cpp
-
-```
+### increase the value of an element of a map
 ```python
-
+d[key] = d.get(key, 0) + 1
 ```
-
-# ./dynamic-array/find-lower-and-upper-bound.py
 ```cpp
-
+d[key] += 1;
 ```
-```python
-
-```
-
-# ./dynamic-array/initialize-array-to-0-1-2-3-4-5-6-7-8-9.cpp
-```cpp
 
-```
+### initialize map
 ```python
-
+d = {'c++': 10, 'python': 12, 'java': 5}
 ```
-
-# ./dynamic-array/sort-array.py
 ```cpp
-
-```
-```python
-
+map<string, int> d { {"c++", 10}, {"python", 12}, {"java", 5} };
 ```
 
-# ./dynamic-array/random-access.cpp
-```cpp
-
-```
+### store multi values on a map
 ```python
-
-```
-
-# ./dynamic-array/random-access.py
-```cpp
+data = (
+    ("Toyota", "Avensis"),
+    ("Toyota", "Auris"),
+    ("Toyota", "Corolla"),
+    ("Audi", "A3"),
+)
 
-```
-```python
+cars = {}
+for brand, model in data:
+    cars.setdefault(brand, [])
+    cars[brand].append(model)
 
+for model in cars.get("Toyota", []):
+    print(model)
 ```
-
-# ./dynamic-array/slice-array.py
 ```cpp
+vector< pair<string, string> > data {
+    make_pair("Toyota", "Avensis"),
+    make_pair("Toyota", "Auris"),
+    make_pair("Toyota", "Corolla"),
+    make_pair("Audi", "A3"),
+    make_pair("Audi", "A4")
+};
 
-```
-```python
+multimap<string, string> cars;
+for(auto x: data) {
+    cars.insert(x);
+}
 
+const auto range = cars.equal_range("Toyota");
+for(auto x=range.first; x!=range.second; ++x) {
+    cout << x->second << endl;
+}
 ```
 
-# ./dynamic-array/filter-array.cpp
-```cpp
-
-```
+### copy keys of a map to array
 ```python
-
+v = d.keys()
 ```
-
-# ./dynamic-array/iterate-over-an-array.cpp
 ```cpp
-
-```
-```python
-
+vector<type> keys;
+boost::copy(d | boost::adaptors::map_keys, std::back_inserter(keys));
 ```
-
-# ./dynamic-array/iterate-over-an-array.py
-```cpp
 
-```
+### check if key exists in the map
 ```python
-
-```
-
-# ./dynamic-array/filter-array.py
-```cpp
+if 'scala' in d:
+    pass
 
-```
-```python
+if d.get('scala'):
+    pass
 
+if d.has_key('scala'):
+    pass
 ```
-
-# ./dynamic-array/initialize-array-to-1-1-1-1-1.cpp
 ```cpp
-
-```
-```python
+if (d.find("scala") != d.end()) {
+}
 
+if (d.count("scala") > 0) {
+}
 ```
-
-# ./dynamic-array/slice-array.cpp
-```cpp
 
-```
+### copy values of a map to array
 ```python
-
+values = d.values()
 ```
-
-# ./dynamic-array/remove-first-element.cpp
 ```cpp
-
+vector<type> values;
+boost::copy(d | boost::adaptors::map_values, std::back_inserter(values));
 ```
-```python
-
-```
-
-# ./dynamic-array/remove-first-element.py
-```cpp
 
-```
+### remove element of map
 ```python
+d.pop("scala") # Raise KeyError if key is missing
 
+d.pop("scala", None) # Don't raise an exception if key is missing
 ```
-
-# ./dynamic-array/reverse-array.py
 ```cpp
-
+d.erase("scala") // No exception if key is missing
 ```
-```python
-
-```
-
-# ./dynamic-array/get-sum-of-elements-in-array.py
-```cpp
 
-```
+### set element of map
 ```python
-
+d['scala'] = 8
 ```
-
-# ./dynamic-array/initialize-array.py
 ```cpp
-
-```
-```python
-
+d["scala"] = 8;
 ```
 
-# ./dynamic-array/get-min-of-elements-in-array.cpp
-```cpp
-
-```
+### iterate over a map
 ```python
-
+for key, value in d.iteritems():
+    pass
 ```
-
-# ./dynamic-array/initialize-array-to-0-1-2-3-4-5-6-7-8-9.py
 ```cpp
-
-```
-```python
-
+for (auto& x: d) {
+    auto key = x.first;
+    auto val = x.second;
+}
 ```
-
-# ./dynamic-array/insert-at-the-beginning.py
-```cpp
 
-```
+### get size of a map
 ```python
-
+size = len(d)
 ```
-
-# ./dynamic-array/remove-last-element.cpp
 ```cpp
-
+int size = d.size()
 ```
-```python
+[&uarr;top](#c-for-python-programmers)
 
-```
 
-# ./dynamic-array/get-min-of-elements-in-array.py
-```cpp
 
-```
-```python
+## Priority Queue
 
-```
+[insert element](#insert-element)
 
-# ./dynamic-array/remove-last-element.py
-```cpp
+[insert to queue](#insert-to-queue)
 
-```
+### insert element
 ```python
+#include<iostream>
+#include<queue>
+using namespace std;
 
-```
+int main()
+{
+    priority_queue<int> q;
+    //queue<int> q;
+    q.push(1);
+    q.push(2);
+    q.push(3);
+    q.push(4);
+    q.push(44);
 
-# ./dynamic-array/initialize-array.cpp
+    while(!q.empty()) {
+        //int e = q.front(); q.pop();
+        int e = q.top(); q.pop();
+        cout << e << endl;
+    }
+}
+```
 ```cpp
 
 ```
+
+### insert to queue
 ```python
 
 ```
-
-# ./dynamic-array/transform-array.py
 ```cpp
-
+q.push(10);
 ```
-```python
-
-```
+[&uarr;top](#c-for-python-programmers)
 
-# ./dynamic-array/count-filtered-elements.cpp
-```cpp
 
-```
-```python
 
-```
+## Queue
 
-# ./dynamic-array/remove-duplicates-from-array.py
-```cpp
+[insert to queue](#insert-to-queue)
 
-```
+### insert to queue
 ```python
-
+q.push(10);
 ```
-
-# ./dynamic-array/initialize-array-to-1-1-1-1-1.py
 ```cpp
-
+q.push(10);
 ```
-```python
+[&uarr;top](#c-for-python-programmers)
 
-```
 
-# ./dynamic-array/count-filtered-elements.py
-```cpp
 
-```
-```python
+## Set
 
-```
+[check if key exists in the set](#check-if-key-exists-in-the-set)
 
-# ./dynamic-array/find-lower-and-upper-bound.cpp
-```cpp
+[initialize set](#initialize-set)
 
-```
-```python
+[insert element](#insert-element)
 
-```
+[intialize set](#intialize-set)
 
-# ./dynamic-array/initialize-n-size-array.cpp
-```cpp
+[remove element](#remove-element)
 
-```
+### initialize set
 ```python
-
+s = {0, 1 ,2, 3, 4}
 ```
-
-# ./dynamic-array/get-sum-of-elements-in-array.cpp
 ```cpp
-
+set<int> s {0,1,2,3,4};
 ```
+
+### intialize set
 ```python
 
 ```
-
-# ./dynamic-array/transform-array.cpp
 ```cpp
+#include<set>
+#include<iostream>
+using namespace std;
 
+int main()
+{
+    set<int> s {0,1,2,3,4}; 
+}
 ```
-```python
 
+### insert element
+```python
+s.add('b')
 ```
-
-# ./dynamic-array/initialize-n-size-array.py
 ```cpp
-
+s.insert("b");
 ```
-```python
 
+### check if key exists in the set
+```python
+if 5 in s:
+    pass
 ```
-
-# ./dynamic-array/insert-at-the-end.cpp
 ```cpp
-
+if (s.find(5) != s.end()) {
+}
 ```
-```python
 
+### remove element
+```python
+s.remove("b");
 ```
-
-# ./dynamic-array/insert-at-the-beginning.cpp
 ```cpp
-
-```
-```python
-
+s.erase("b");
 ```
+[&uarr;top](#c-for-python-programmers)
 
-# ./dynamic-array/insert-at-the-end.py
-```cpp
 
-```
-```python
 
-```
+## String
 
-# ./dynamic-array/sort-array.cpp
-```cpp
+[append](#append)
 
-```
+### append
 ```python
-
+s = 'abcd'
+s + 'a'
 ```
-
-# ./dynamic-array/reverse-array.cpp
 ```cpp
 
 ```
-```python
-
-```
-
+[&uarr;top](#c-for-python-programmers)
 
 
-# File
 
-[./file/read-file-line-by-line.py](#file-read-file-line-by-line-py)
+## Thread
 
-[./file/read-file-line-by-line.cpp](#file-read-file-line-by-line-cpp)
+[pass read only data to thread](#pass-read-only-data-to-thread)
 
-[./file/write-line-to-file.cpp](#file-write-line-to-file-cpp)
+[pass writable data to thread](#pass-writable-data-to-thread)
 
-[./file/write-line-to-file.py](#file-write-line-to-file-py)
+[start thread](#start-thread)
 
-# ./file/read-file-line-by-line.py
-```cpp
-
-```
+### pass read only data to thread
 ```python
+def worker(s):
+    s = 'new value' # only local modification
 
+s = "initial value"
+t = Thread(target=worker, args=(s, ))
+t.start()
+t.join()
 ```
-
-# ./file/read-file-line-by-line.cpp
 ```cpp
+void worker(const string& s)
+{
+    //s = "new value"; 
+}
 
+string s("initial value");
+thread t(worker, s);
+t.join();
 ```
+
+### pass writable data to thread
 ```python
+def worker(s):
+    s['v'] = 'new value'
 
+s = {'v': 'initial value'}
+t = Thread(target=worker, args=(s, ))
+t.start()
+t.join()
 ```
-
-# ./file/write-line-to-file.cpp
 ```cpp
+void worker(string& s)
+{
+    s = "new value";
+}
 
+string s("initial value");
+thread t(worker, ref(s));
+t.join();
 ```
+
+### start thread
 ```python
+from threading import Thread
 
-```
+def worker():
+    pass
 
-# ./file/write-line-to-file.py
+t = Thread(target=worker)
+t.start()
+t.join()
+```
 ```cpp
+#include<thread>
 
-```
-```python
+void worker();
 
+thread t(worker);
+t.join();
 ```
-
+[&uarr;top](#c-for-python-programmers)
 
 
-# Lambda
 
-[./lambda/create-function.cpp](#lambda-create-function-cpp)
+## Tuple
 
-[./lambda/create-function.py](#lambda-create-function-py)
+[access tuple](#access-tuple)
 
-# ./lambda/create-function.cpp
-```cpp
+[initialize tuple](#initialize-tuple)
 
-```
+### access tuple
 ```python
-
+t[0]
+t[1]
+t[2]
 ```
-
-# ./lambda/create-function.py
 ```cpp
-
+get<0>(t)
+get<1>(t)
+get<2>(t)
 ```
-```python
 
+### initialize tuple
+```python
+t = (10, "some string", 0.5)
+```
+```cpp
+auto t = make_tuple(10, "some string", 0.5);
 ```
+[&uarr;top](#c-for-python-programmers)
