@@ -53,7 +53,7 @@
 [Find lower and upper bound](#find-lower-and-upper-bound)
 
 # Initialize array
-```c++
+```cpp
 v = [1,2,3,4,5]
 ```
 ```python
@@ -61,7 +61,7 @@ vector<int> v{1,2,3,4,5};
 ```
 
 # Initialize N-size array
-```c++
+```cpp
 v = [0] * N
 ```
 ```python
@@ -69,7 +69,7 @@ vector<int> v(N);
 ```
 
 # Initialize array to [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-```c++
+```cpp
 v = range(0, 10)
 ```
 ```python
@@ -78,7 +78,7 @@ iota(v.begin(), v.end(), 0);
 ```
 
 # Initialize array to [1, 1, 1, 1, 1]
-```c++
+```cpp
 v = [1]*5
 ```
 ```python
@@ -86,7 +86,7 @@ vector<int> v(5, 1);
 ```
 
 # Random access
-```c++
+```cpp
 v[0]    # O(1)
 ```
 ```python
@@ -94,7 +94,7 @@ v[0]    # O(1)
 ```
 
 # Insert at the end
-```c++
+```cpp
 v.append(5) # possible full reallocation
 ```
 ```python
@@ -102,7 +102,7 @@ v.push_back(5)  // possible full reallocation
 ```
 
 # Insert at the beginning
-```c++
+```cpp
 # don't do that. use deque
 ```
 ```python
@@ -110,7 +110,7 @@ v.push_back(5)  // possible full reallocation
 ```
 
 # Iterate over an array
-```c++
+```cpp
 for i in [0, 1, 2, 3, 4]:
     pass
 ```
@@ -120,7 +120,7 @@ for (auto i: {0, 1, 2, 3, 4}) {
 ```
 
 # Reverse array
-```c++
+```cpp
 v.reverse()
 ```
 ```python
@@ -128,7 +128,7 @@ reverse(v.begin(), v.end());
 ```
 
 # Filter array
-```c++
+```cpp
 # In place
 v = filter(lambda x: x%2 == 0, v)
 
@@ -145,7 +145,7 @@ copy_if(v.begin(), v.end(), back_inserter(v2), [](const int x){return x%2 == 0;}
 ```
 
 # Transform array
-```c++
+```cpp
 # In place
 v = map(lambda x: x*2, v)
 
@@ -162,7 +162,7 @@ transform(v.begin(), v.end(), back_inserter(v2), [](const int x){return x*2;});
 ```
 
 # Sort array
-```c++
+```cpp
 # In place
 v.sort()
 
@@ -188,7 +188,7 @@ sort(v.rbegin(), v.rend())
 ```
 
 # Get min of elements in array
-```c++
+```cpp
 minimal = min(v)
 ```
 ```python
@@ -196,7 +196,7 @@ auto minimum = min_element(v.begin(), v.end());
 ```
 
 # Get sum of elements in array
-```c++
+```cpp
 total = sum(v)
 ```
 ```python
@@ -204,7 +204,7 @@ int total = accumulate(v.begin(), v.end(), 0)
 ```
 
 # Slice array
-```c++
+```cpp
 v = v[2:8]
 v = v[2:]
 v = v[:-2]
@@ -218,7 +218,7 @@ v.assign(v.begin()+v.size()-2, v.end());
 ```
 
 # Count filtered elements
-```c++
+```cpp
 cnt = len(filter(lambda x: x>10, v))
 ```
 ```python
@@ -226,7 +226,7 @@ int cnt = count_if(v.begin(), v.end(), [](int x) {return x>10;});
 ```
 
 # Remove first element
-```c++
+```cpp
 v.pop(0)    # prefer deque
 ```
 ```python
@@ -234,7 +234,7 @@ v.erase(v.begin()); // prefer deque
 ```
 
 # Remove last element
-```c++
+```cpp
 v.pop()
 ```
 ```python
@@ -242,7 +242,7 @@ v.pop_back();
 ```
 
 # Remove duplicates from array
-```c++
+```cpp
 v = list(set(v))
 ```
 ```python
@@ -251,7 +251,7 @@ v.erase(unique(v.begin(), v.end()), v.end());
 ```
 
 # Find lower and upper bound
-```c++
+```cpp
 import bisect
 v = [3, 5, 5, 5, 6, 8, 10]
 lower_bound_index = bisect.bisect_left(v, 5)  # 1
@@ -280,7 +280,7 @@ auto upper_bound_index = distance(v.begin(), upper_bound(v.begin(), v.end(), 5))
 [Store multi values on a map](#store-multi-values-on-a-map)
 
 # Get size of a map
-```c++
+```cpp
 size = len(d)
 ```
 ```python
@@ -288,7 +288,7 @@ int size = d.size()
 ```
 
 # Iterate over a map
-```c++
+```cpp
 for key, value in d.iteritems():
     pass
 ```
@@ -300,7 +300,7 @@ for (auto& x: d) {
 ```
 
 # Increase the value of an element of a map
-```c++
+```cpp
 d[key] = d.get(key, 0) + 1
 ```
 ```python
@@ -308,7 +308,7 @@ d[key] += 1;
 ```
 
 # Copy keys of a map to array
-```c++
+```cpp
 v = d.keys()
 ```
 ```python
@@ -317,7 +317,7 @@ boost::copy(d | boost::adaptors::map_keys, std::back_inserter(keys));
 ```
 
 # Copy values of a map to array
-```c++
+```cpp
 values = d.values()
 ```
 ```python
@@ -326,7 +326,7 @@ boost::copy(d | boost::adaptors::map_values, std::back_inserter(values));
 ```
 
 # Store multi values on a map
-```c++
+```cpp
 data = (
     ("Toyota", "Avensis"),
     ("Toyota", "Auris"),
@@ -371,7 +371,7 @@ for(auto x=range.first; x!=range.second; ++x) {
 [Access tuple](#access-tuple)
 
 # Initialize tuple
-```c++
+```cpp
 t = (10, "some string", 0.5)
 ```
 ```python
@@ -379,7 +379,7 @@ auto t = make_tuple(10, "some string", 0.5);
 ```
 
 # Access tuple
-```c++
+```cpp
 t[0]
 t[1]
 t[2]
@@ -399,7 +399,7 @@ get<2>(t)
 [Write line to file](#write-line-to-file)
 
 # Read file line by line
-```c++
+```cpp
 for line in open('example.txt'):
     # line with ending \n
 ```
@@ -412,7 +412,7 @@ while (getline(file, line)) {   // #include<fstream>
 ```
 
 # Write line to file
-```c++
+```cpp
 with open('example.txt', 'w') as file:
     file.write('some text\n')
 ```
@@ -428,7 +428,7 @@ file << "some text\n";
 [Create function](#create-function)
 
 # Create function
-```c++
+```cpp
 f = lambda x: x%2
 f(3)
 ```
@@ -448,7 +448,7 @@ f(3);
 [Pass writable data to thread](#pass-writable-data-to-thread)
 
 # Start thread
-```c++
+```cpp
 from threading import Thread
 
 def worker():
@@ -468,7 +468,7 @@ t.join();
 ```
 
 # Pass read only data to thread
-```c++
+```cpp
 def worker(s):
     s = 'new value' # only local modification
 
@@ -489,7 +489,7 @@ t.join();
 ```
 
 # Pass writable data to thread
-```c++
+```cpp
 def worker(s):
     s['v'] = 'new value'
 
@@ -526,7 +526,7 @@ t.join();
 [Convert array of ints to string](#convert-array-of-ints-to-string)
 
 # Get data type as string
-```c++
+```cpp
 type(var)
 ```
 ```python
@@ -542,7 +542,7 @@ boost::typeindex::type_id_with_cvr<decltype(param)>().pretty_name()
 ```
 
 # Convert string to int
-```c++
+```cpp
 k = int(s)  # throws ValueError
 ```
 ```python
@@ -550,7 +550,7 @@ auto k = stoi(s);   // throws std::invalid_argument
 ```
 
 # Convert int to string
-```c++
+```cpp
 s = str(k)
 ```
 ```python
@@ -558,7 +558,7 @@ string s = to_string(k);
 ```
 
 # Convert array of ints to string
-```c++
+```cpp
 s = ''.join(map(str, v))
 ```
 ```python
