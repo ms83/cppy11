@@ -711,6 +711,8 @@ s + 'a'
 
 ## Thread
 
+[map array concurrently](#map-array-concurrently)
+
 [pass read only data to thread](#pass-read-only-data-to-thread)
 
 [pass writable data to thread](#pass-writable-data-to-thread)
@@ -777,6 +779,50 @@ void worker();
 
 thread t(worker);
 t.join();
+```
+
+### map array concurrently
+```python
+from multiprocessing import Pool
+
+def f(x):
+    return x*x
+
+if __name__ == '__main__':
+    p = Pool(5)
+    p.map(f, [1, 2, 3]))
+    # p is not [1, 4, 9]
+```
+```cpp
+#include<iostream>
+#include<vector>
+#include<thread>
+
+void f(int& x)
+{   
+    x *= x;
+}
+
+class Pool
+{
+public:
+    static void map(void (*f)(int&), std::vector<int>& input) {
+        std::vector<std::thread> threads(input.size());
+        for (int i=0;i<input.size();++i) {
+            threads[i] = std::thread(f, std::ref(input[i]));
+        }
+        for (auto& t: threads) {
+            t.join();
+        }
+    }
+};
+
+int main()
+{
+    std::vector<int> v{1,2,3};
+    Pool::map(f, v);
+    // v is now [1, 4, 9]
+}
 ```
 
 [&uarr;top](#c-for-python-programmers)
