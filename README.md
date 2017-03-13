@@ -1,7 +1,7 @@
 
 # C++ for Python Programmers
 
-[Datatype](#datatype) &nbsp; [Deque](#deque) &nbsp; [Dynamic Array](#dynamic-array) &nbsp; [File](#file) &nbsp; [Lambda](#lambda) &nbsp; [Map](#map) &nbsp; [Priority Queue](#priority-queue) &nbsp; [Queue](#queue) &nbsp; [Set](#set) &nbsp; [String](#string) &nbsp; [Thread](#thread) &nbsp; [Tuple](#tuple)
+[Datatype](#datatype) &nbsp; [Datetime](#datetime) &nbsp; [Deque](#deque) &nbsp; [Dynamic Array](#dynamic-array) &nbsp; [File](#file) &nbsp; [Lambda](#lambda) &nbsp; [Map](#map) &nbsp; [Priority Queue](#priority-queue) &nbsp; [Queue](#queue) &nbsp; [Set](#set) &nbsp; [String](#string) &nbsp; [Thread](#thread) &nbsp; [Tuple](#tuple)
 
 
 
@@ -16,36 +16,108 @@
 [get data type as string](#get-data-type-as-string)
 
 ### convert int to string
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 s = str(k)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 string s = to_string(k);
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### convert array of ints to string
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 s = ''.join(map(str, v))
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 stringstream ss;
 copy(v.begin(), v.end(), ostream_iterator<int>(ss, ""));
 string s = ss.str();
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### convert string to int
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 k = int(s)  # throws ValueError
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 auto k = stoi(s);   // throws std::invalid_argument
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### get data type as string
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 type(var)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 typeid(var).name()
 
 // or
@@ -55,7 +127,75 @@ boost::typeindex::type_id_with_cvr<T>().pretty_name()
 // or
 
 boost::typeindex::type_id_with_cvr<decltype(param)>().pretty_name()
-```
+</pre>
+</td>
+</tr>
+</table>
+    
+
+[&uarr;top](#c-for-python-programmers)
+
+
+
+## Datetime
+
+[get datetime difference](#get-datetime-difference)
+
+[print current timestamp](#print-current-timestamp)
+
+### print current timestamp
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
+print(int(time.time()))
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
+std::cout << std::time(0);
+</pre>
+</td>
+</tr>
+</table>
+    
+
+### get datetime difference
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
+yesterday = datetime.now() - timedelta(hours=24)
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
+auto yesterday = std::chrono::system_clock::now() - std::chrono::hours(24);
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -70,35 +210,92 @@ boost::typeindex::type_id_with_cvr<decltype(param)>().pretty_name()
 [insert element](#insert-element)
 
 ### access element
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 dq[0]
 dq[-1]
 dq[5]   # don't do that. use list instead
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 dq.front()
 dq.back()
 dq[5]   # don't do that. use vector instead
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### initialize deque
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 from collections import deque
 dq = deque([0,1,2,3,4])
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 deque<int> dq {0,1,2,3,4};
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### insert element
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 dq.append(10)
 dq.appendleft(20)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 dq.push_back(10)
 dq.push_front(20)
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -147,103 +344,306 @@ dq.push_front(20)
 [transform array](#transform-array)
 
 ### initialize n size array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v = [0] * N
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 vector<int> v(N);
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### filter array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 # In place
 v = filter(lambda x: x%2 == 0, v)
 
 # Copy
 v2 = filter(lambda x: x%2 == 0, v)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 // In place
 v.erase(remove_if(v.begin(), v.end(), [](const int x){return x%2 == 0;}), v.end());
 
 // Copy
 vector<int> v2;
 copy_if(v.begin(), v.end(), back_inserter(v2), [](const int x){return x%2 == 0;});
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### get min of elements in array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 minimal = min(v)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 auto minimum = min_element(v.begin(), v.end());
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### count filtered elements
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 cnt = len(filter(lambda x: x>10, v))
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 int cnt = count_if(v.begin(), v.end(), [](int x) {return x>10;});
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### remove last element
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v.pop()
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 v.pop_back();
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### remove first element
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v.pop(0)    # prefer deque
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 v.erase(v.begin()); // prefer deque
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### insert at the beginning
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 # don't do that. use deque
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 // don't do that. Use deque
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### remove duplicates from array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v = list(set(v))
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 sort(v.begin(), v.end())
 v.erase(unique(v.begin(), v.end()), v.end());
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### initialize array to 1 1 1 1 1
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v = [1]*5
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 vector<int> v(5, 1);
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### slice array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v = v[2:8]
 v = v[2:]
 v = v[:-2]
 v = v[-2:]
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 v.assign(v.begin()+2, v.begin()+8);
 v.assign(v.begin()+2, v.end());
 v.assign(v.begin(), v.begin()+v.size()-2);
 v.assign(v.begin()+v.size()-2, v.end());
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### sort array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 # In place
 v.sort()
 
@@ -255,8 +655,10 @@ v.sort(reverse=True)
 
 # Reversed order #2
 sorted(v, reverse=True)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 // In place
 sort(v.begin(), v.end())
 
@@ -266,96 +668,271 @@ vector<int> v2(v)
 
 // Reversed order
 sort(v.rbegin(), v.rend())
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### find lower and upper bound
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 import bisect
 v = [3, 5, 5, 5, 6, 8, 10]
 lower_bound_index = bisect.bisect_left(v, 5)  # 1
 upper_bound_index = bisect.bisect_right(v, 5) # 4
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 vector<int> v {3, 5, 5, 5, 6, 8, 10};
 auto lower_bound_index = distance(v.begin(), lower_bound(v.begin(), v.end(), 5));
 auto upper_bound_index = distance(v.begin(), upper_bound(v.begin(), v.end(), 5));
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### insert at the end
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v.append(5) # possible full reallocation
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 v.push_back(5)  // possible full reallocation
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### random access
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v[0]    # O(1)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 v[0]    # O(1)
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### iterate over an array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 for i in [0, 1, 2, 3, 4]:
     pass
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 for (auto i: {0, 1, 2, 3, 4}) {
 }
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### transform array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 # In place
 v = map(lambda x: x*2, v)
 
 # Copy
 v2 = map(lambda x: x*2, v)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 // In place
 transform(v.begin(), v.end(), v.begin(), [](const int x){return x*2;});
 
 // Copy
 vector<int> v2;
 transform(v.begin(), v.end(), back_inserter(v2), [](const int x){return x*2;});
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### reverse array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v.reverse()
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 reverse(v.begin(), v.end());
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### initialize array to 0 1 2 3 4 5 6 7 8 9
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v = range(0, 10)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 vector<int> v(10);
 iota(v.begin(), v.end(), 0);
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### get sum of elements in array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 total = sum(v)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 int total = accumulate(v.begin(), v.end(), 0)
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### initialize array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v = [1,2,3,4,5]
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 vector<int> v{1,2,3,4,5};
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -368,27 +945,65 @@ vector<int> v{1,2,3,4,5};
 [write line to file](#write-line-to-file)
 
 ### read file line by line
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 for line in open('example.txt'):
     # line with ending \n
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 string line;
 ifstream file("example.txt");   // #include<iostream>
 while (getline(file, line)) {   // #include<fstream>
     // line without ending \n
 }
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### write line to file
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 with open('example.txt', 'w') as file:
     file.write('some text\n')
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 ofstream file("example.txt");
 file << "some text\n";
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -399,14 +1014,33 @@ file << "some text\n";
 [create function](#create-function)
 
 ### create function
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 f = lambda x: x%2
 f(3)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 auto f = [](int x){return x%2;};
 f(3);
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -435,23 +1069,74 @@ f(3);
 [store multi values on a map](#store-multi-values-on-a-map)
 
 ### increase the value of an element of a map
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 d[key] = d.get(key, 0) + 1
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 d[key] += 1;
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### initialize map
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 d = {'c++': 10, 'python': 12, 'java': 5}
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 map<string, int> d { {"c++", 10}, {"python", 12}, {"java", 5} };
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### store multi values on a map
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 data = (
     ("Toyota", "Avensis"),
     ("Toyota", "Auris"),
@@ -466,8 +1151,10 @@ for brand, model in data:
 
 for model in cars.get("Toyota", []):
     print(model)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 vector< pair<string, string> > data {
     make_pair("Toyota", "Avensis"),
     make_pair("Toyota", "Auris"),
@@ -485,19 +1172,55 @@ const auto range = cars.equal_range("Toyota");
 for(auto x=range.first; x!=range.second; ++x) {
     cout << x->second << endl;
 }
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### copy keys of a map to array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 v = d.keys()
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 vector<type> keys;
 boost::copy(d | boost::adaptors::map_keys, std::back_inserter(keys));
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### check if key exists in the map
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 if 'scala' in d:
     pass
 
@@ -506,61 +1229,162 @@ if d.get('scala'):
 
 if d.has_key('scala'):
     pass
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 if (d.find("scala") != d.end()) {
 }
 
 if (d.count("scala") > 0) {
 }
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### copy values of a map to array
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 values = d.values()
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 vector<type> values;
 boost::copy(d | boost::adaptors::map_values, std::back_inserter(values));
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### remove element of map
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 d.pop("scala") # Raise KeyError if key is missing
 
 d.pop("scala", None) # Don't raise an exception if key is missing
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 d.erase("scala") // No exception if key is missing
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### set element of map
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 d['scala'] = 8
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 d["scala"] = 8;
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### iterate over a map
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 for key, value in d.iteritems():
     pass
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 for (auto& x: d) {
     auto key = x.first;
     auto val = x.second;
 }
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### get size of a map
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 size = len(d)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 int size = d.size()
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -573,7 +1397,20 @@ int size = d.size()
 [insert to queue](#insert-to-queue)
 
 ### insert element
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 #include<iostream>
 #include<queue>
 using namespace std;
@@ -594,18 +1431,43 @@ int main()
         cout << e << endl;
     }
 }
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### insert to queue
-```python
 
-```
-```cpp
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
+
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 q.push(10);
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -616,12 +1478,31 @@ q.push(10);
 [insert to queue](#insert-to-queue)
 
 ### insert to queue
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 q.push(10);
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 q.push(10);
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -640,18 +1521,52 @@ q.push(10);
 [remove element](#remove-element)
 
 ### initialize set
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 s = {0, 1 ,2, 3, 4}
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 set<int> s {0,1,2,3,4};
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### intialize set
-```python
 
-```
-```cpp
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
+
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 #include<set>
 #include<iostream>
 using namespace std;
@@ -660,33 +1575,94 @@ int main()
 {
     set<int> s {0,1,2,3,4}; 
 }
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### insert element
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 s.add('b')
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 s.insert("b");
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### check if key exists in the set
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 if 5 in s:
     pass
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 if (s.find(5) != s.end()) {
 }
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### remove element
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 s.remove("b");
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 s.erase("b");
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -697,13 +1673,32 @@ s.erase("b");
 [append](#append)
 
 ### append
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 s = 'abcd'
 s + 'a'
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -720,7 +1715,20 @@ s + 'a'
 [start thread](#start-thread)
 
 ### pass read only data to thread
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 def worker(s):
     s = 'new value' # only local modification
 
@@ -728,8 +1736,10 @@ s = "initial value"
 t = Thread(target=worker, args=(s, ))
 t.start()
 t.join()
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 void worker(const string& s)
 {
     //s = "new value"; 
@@ -738,10 +1748,27 @@ void worker(const string& s)
 string s("initial value");
 thread t(worker, s);
 t.join();
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### pass writable data to thread
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 def worker(s):
     s['v'] = 'new value'
 
@@ -749,8 +1776,10 @@ s = {'v': 'initial value'}
 t = Thread(target=worker, args=(s, ))
 t.start()
 t.join()
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 void worker(string& s)
 {
     s = "new value";
@@ -759,10 +1788,27 @@ void worker(string& s)
 string s("initial value");
 thread t(worker, ref(s));
 t.join();
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### start thread
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 from threading import Thread
 
 def worker():
@@ -771,18 +1817,37 @@ def worker():
 t = Thread(target=worker)
 t.start()
 t.join()
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 #include<thread>
 
 void worker();
 
 thread t(worker);
 t.join();
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### map array concurrently
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 from multiprocessing import Pool
 
 def f(x):
@@ -792,8 +1857,10 @@ if __name__ == '__main__':
     p = Pool(5)
     p.map(f, [1, 2, 3]))
     # p is not [1, 4, 9]
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 #include<iostream>
 #include<vector>
 #include<thread>
@@ -823,7 +1890,11 @@ int main()
     Pool::map(f, v);
     // v is now [1, 4, 9]
 }
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)
 
@@ -836,23 +1907,61 @@ int main()
 [initialize tuple](#initialize-tuple)
 
 ### access tuple
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 t[0]
 t[1]
 t[2]
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 get<0>(t)
 get<1>(t)
 get<2>(t)
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 ### initialize tuple
-```python
+
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
 t = (10, "some string", 0.5)
-```
-```cpp
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
 auto t = make_tuple(10, "some string", 0.5);
-```
+</pre>
+</td>
+</tr>
+</table>
+    
 
 [&uarr;top](#c-for-python-programmers)

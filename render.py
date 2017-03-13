@@ -54,8 +54,31 @@ for section in sorted(topics):
         print('\n### {}'.format(_lctitle(topic)))
         py_code = _code(os.path.join(_slug(section), topic) + '.py')
         cpp_code = _code(os.path.join(_slug(section), topic) + '.cpp')
-        print('```python\n{}\n```'.format(py_code))
-        print('```cpp\n{}\n```'.format(cpp_code))
+        print("""
+
+<table>
+<tr>
+<th>
+Python
+</th>
+<th>
+C++11
+</th>
+</tr>
+<tr>
+<td  valign="top">
+<pre lang="py">
+{py_code}
+</pre>
+</td>
+<td valign="top">
+<pre lang="cpp">
+{cpp_code}
+</pre>
+</td>
+</tr>
+</table>
+    """.format(py_code=py_code, cpp_code=cpp_code))
 
     print('\n[&uarr;top](#c-for-python-programmers)')
 
